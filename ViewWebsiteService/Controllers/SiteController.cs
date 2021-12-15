@@ -1,4 +1,5 @@
 ﻿using Common;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -10,6 +11,7 @@ namespace ViewWebsiteService.Controllers
 {
     [Route("[controller]")]
     [ApiController]
+    [DisableCors]
     public class SiteController : ControllerBase
     {
         [Route("ViewPage/{_siteName}/{_pageName}")]
