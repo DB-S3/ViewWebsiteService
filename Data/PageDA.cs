@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Data
 {
     public class PageDA : Common.Interfaces.IPagesDA
     {
-        public string ReturnPageId(string _siteId, string _pageName) {
+        public async Task<string> ReturnPageId(string _siteId, string _pageName) {
             using (Database db = new Database())
             {
                 if (db.Pages.Where(x => x.WebsiteId == _siteId && x.Name == _pageName).Count() > 0) {
@@ -18,7 +19,7 @@ namespace Data
                 return null;
             }
         }
-        public Common.Page FindPage(string Id)
+        public async Task<Common.Page> FindPage(string Id)
         {
             using (Database db = new Database())
             {
