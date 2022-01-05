@@ -4,12 +4,12 @@ namespace Factory
 {
     public class Factory
     {
-        public static Data.PageDA GetPageDA() {
-            return new Data.PageDA();
+        public static Data.PageDA GetPageDA(Data.Database db) {
+            return new Data.PageDA(db);
         }
-        public static Data.WebsiteDa GetWebsiteDa()
+        public static Data.WebsiteDa GetWebsiteDa(Data.Database db)
         {
-            return new Data.WebsiteDa();
+            return new Data.WebsiteDa(db);
         }
     }
 }

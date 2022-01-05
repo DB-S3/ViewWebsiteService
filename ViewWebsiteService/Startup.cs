@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,6 +36,11 @@ namespace ViewWebsiteService
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
+            services.AddDbContext<Data.Database>(optionsBuilder =>
+               optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=ortisy",
+                   new MariaDbServerVersion(new Version(10, 5, 8))
+               )
+               );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

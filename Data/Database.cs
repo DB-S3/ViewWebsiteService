@@ -14,14 +14,11 @@ namespace Data
 
         public DbSet<Common.Options> Options { get; set; }
 
-        
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseMySql("server=localhost;user id=root;password=root;database=ortisy",
-                    new MariaDbServerVersion(new Version(10, 5, 8))
-                );
-        }
+
+        public Database(DbContextOptions<Database> options)
+        : base(options)
+        { }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

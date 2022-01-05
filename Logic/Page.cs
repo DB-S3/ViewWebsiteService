@@ -22,10 +22,10 @@ namespace Logic
             return new Common.Page();
         }
 
-        public Page()
+        public Page(Data.Database db)
         {
-            PageDa = Factory.Factory.GetPageDA();
-            WebsiteDa = Factory.Factory.GetWebsiteDa();
+            PageDa = Factory.Factory.GetPageDA(db);
+            WebsiteDa = Factory.Factory.GetWebsiteDa(db);
         }
     }
 }

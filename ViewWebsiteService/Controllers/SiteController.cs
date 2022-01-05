@@ -14,10 +14,16 @@ namespace ViewWebsiteService.Controllers
     [DisableCors]
     public class SiteController : ControllerBase
     {
+        private readonly Logic.Page PageLogic;
+        public SiteController(Data.Database db)
+        {
+            PageLogic = new Logic.Page(db);
+        }
+
         [Route("ViewPage/{_siteName}/{_pageName}")]
         [HttpGet]
         public async Task<Page> GetPage(string _siteName, string _pageName) {
-            return await new Logic.Page().GetPage(_siteName, _pageName);
+            return await PageLogic.GetPage(_siteName, _pageName);
         }
 
 
