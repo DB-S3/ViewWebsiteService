@@ -18,6 +18,7 @@ namespace ViewWebsiteService.Controllers
         public SiteController(Data.Database db)
         {
             PageLogic = new Logic.Page(db);
+            db.Database.EnsureCreated();
         }
 
         [Route("ViewPage/{_siteName}/{_pageName}")]
